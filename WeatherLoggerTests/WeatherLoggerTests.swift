@@ -30,5 +30,27 @@ class WeatherLoggerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testGetWeatherWithCityName() {
+        let cityName = "Karachi"
+        let expectation = self.expectation(description: "Get City Weather")
+        
+        APIClient.getWeather(with: cityName) { (result, error) in
+            XCTAssertNotNil(result, error?.localizedDescription ?? "No data found")
+            expectation.fulfill()
+        }
+        self.wait(for: [expectation], timeout: 120.0)
+    }
 
+    func testGetWeatherWithLatLon() {
+        let lat = "67.08"
+        let lon = "24.91"
+        let expectation = self.expectation(description: "Get City Weather with Lat Lon")
+        
+        APIClient.getWeather(with: lat, lon: lon) { (result, error) in
+            XCTAssertNotNil(result, error?.localizedDescription ?? "No data found")
+            expectation.fulfill()
+        }
+        self.wait(for: [expectation], timeout: 120.0)
+    }
 }
