@@ -52,14 +52,18 @@ class Result {
         }
     }
     
-    var dt: Int
+    var dt: Double
     var main: Main
     var weather: Weather
     var coord: Coordinates
     var name: String
     
+    var date: Date? {
+        Date(timeIntervalSinceReferenceDate: dt)
+    }
+    
     init(json: JSON) {
-        dt = json["dt"].intValue
+        dt = json["dt"].doubleValue
         main = Main(json: json["main"])
         coord = Coordinates(json: json["coord"])
         

@@ -8,14 +8,31 @@
 
 import UIKit
 import CoreLocation
+import SVProgressHUD
 
 class ViewController: UIViewController {
     let CurrentCell = "CurrentCell"
     let HistoryCell = "HistoryCell"
     
     let locationManager = CLLocationManager()
-    var coordinates: CLLocationCoordinate2D?
+    var coordinates: CLLocationCoordinate2D? {
+        didSet {
+            if let coordinates = coordinates {
+                let lat = String(coordinates.latitude)
+                let lon = String(coordinates.longitude)
+                
+                fetchWeather(lon: lon, lat: lat)
+            }
+        }
+    }
     
+    var result: Result? {
+        didSet {
+            if let _ = result {
+                tableView.reloadData()
+            }
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,7 +73,26 @@ class ViewController: UIViewController {
         else {
             showPermissionErrorAlert()
         }
-
+    }
+    
+    @IBAction func saveButtonTapped(sender: UIButton) {
+        if let result = self.result {
+            let dic: [String:String] = [
+                "date": Date().format()!,
+                "temp" : String(result.main.temp),
+                "icon": result.weather.icon
+            ]
+            UserDefaults.standard.setValue(dic, forKey: "hist")
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
+    func fetchWeather(lon: String, lat: String) {
+        DispatchQueue.main.async {
+            APIClient.getWeather(with: lat, lon: lon) { (result, error) in
+                self.result = result
+            }
+        }
     }
 }
 
@@ -76,7 +112,10 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell!
         if indexPath.section == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: CurrentCell) as! CurrentWeatherCell
+            
+            let currentCell = tableView.dequeueReusableCell(withIdentifier: CurrentCell) as! CurrentWeatherCell
+            currentCell.model = self.result
+            cell = currentCell
         }
         else {
             cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell) as! HistoryWeatherCell
@@ -91,5 +130,4 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? "Current" : "History"
     }
-    
 }

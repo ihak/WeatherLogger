@@ -26,6 +26,7 @@
 		E46E0371240D0D850080DFC1 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46E036F240D0D850080DFC1 /* Weather.swift */; };
 		E46E0373240D2BE20080DFC1 /* CurrentWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46E0372240D2BE20080DFC1 /* CurrentWeatherCell.swift */; };
 		E46E0375240D2D820080DFC1 /* HistoryWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46E0374240D2D820080DFC1 /* HistoryWeatherCell.swift */; };
+		E46E0377240D389F0080DFC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46E0376240D389F0080DFC1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		E46E036F240D0D850080DFC1 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E46E0372240D2BE20080DFC1 /* CurrentWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherCell.swift; sourceTree = "<group>"; };
 		E46E0374240D2D820080DFC1 /* HistoryWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryWeatherCell.swift; sourceTree = "<group>"; };
+		E46E0376240D389F0080DFC1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED98CD2FD38E5BBB1449CAB6 /* Pods-WeatherLoggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherLoggerTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherLoggerTests/Pods-WeatherLoggerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 				E46E036F240D0D850080DFC1 /* Weather.swift */,
 				E46E0372240D2BE20080DFC1 /* CurrentWeatherCell.swift */,
 				E46E0374240D2D820080DFC1 /* HistoryWeatherCell.swift */,
+				E46E0376240D389F0080DFC1 /* Extensions.swift */,
 			);
 			path = WeatherLogger;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E46E033E240D094B0080DFC1 /* ViewController.swift in Sources */,
+				E46E0377240D389F0080DFC1 /* Extensions.swift in Sources */,
 				E46E036A240D0B640080DFC1 /* Environment.swift in Sources */,
 				E46E033A240D094B0080DFC1 /* AppDelegate.swift in Sources */,
 				E46E0373240D2BE20080DFC1 /* CurrentWeatherCell.swift in Sources */,

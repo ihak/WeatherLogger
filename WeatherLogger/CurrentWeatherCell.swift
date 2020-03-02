@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CurrentWeatherCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
@@ -26,6 +27,21 @@ class CurrentWeatherCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    var model: Result? {
+        didSet {
+            if let model = model {
+                self.dateLabel.text = "\(model.date!.format()!)"
+                self.tempLabel.text = "\(model.main.temp)"
+                self.feelsLikeLabel.text = "Feels like \(model.main.feels_like)"
+                
+                self.desLabel.text = model.weather.description
+                if let url = URL(string: "\(Environment.baseImageURL)\(model.weather.icon)@2x.png") {
+                    self.imag.af.setImage(withURL: url)
+                }
+            }
+        }
     }
 
 }
