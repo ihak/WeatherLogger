@@ -6,7 +6,8 @@ target 'WeatherLogger' do
   use_frameworks!
 
   # Pods for WeatherLogger
-  pod 'Alamofire', '~> 5.0.0-rc.3'
+  pod 'Alamofire', '~> 5.0.1'
+  pod 'AlamofireImage', '~> 4.0'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'SwiftyJSON', '~> 4.0'
 
